@@ -24,7 +24,7 @@ export default function PostsList() {
     }
 
     const sortBy = (prop: string) => {
-        let [sortProp, desc] = prop?.split(':') ?? [];
+        const [sortProp, desc] = prop?.split(':') ?? [];
 
         setSortedPosts(
             [...data.posts].sort((a, b) =>

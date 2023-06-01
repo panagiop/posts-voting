@@ -12,7 +12,7 @@ export default function SortableProperty({
     onClick: CallableFunction;
     children: ReactNode;
 }) {
-    let [sortProp, desc] = sort?.split(':') ?? [];
+    const [sortProp, desc] = sort?.split(':') ?? [];
     let newSort: string | null;
 
     if (sortProp !== prop) {
