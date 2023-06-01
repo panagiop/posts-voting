@@ -1,8 +1,19 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
-First, run the development server:
+### Local development
+For local development create a ```.env``` file as follows:
+```
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=6b87d831cf000cc9755b9869cabe514d8bfc0e241e5f2ec4dc83a5e0d004bbeb
+POSTGRES_USER=test1234
+POSTGRES_PASSWORD=hajksdg7ASFAT
+POSTGRES_DB=post-votes-db
+DATABASE_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:5432/${POSTGRES_DB}?schema=public&connect_timeout=500"
+```
+
+Make sure a PostgreSQL is installed and after that create a DB with the above credentials
+
+Then, run the local development server:
 
 ```bash
 npm run dev
@@ -12,23 +23,19 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### For Production 
+For production create a ```.env.prod``` file as follows:
+```
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=6b87d831cf000cc9755b9869cabe514d8bfc0e241e5f2ec4dc83a5e0d004bbeb
+POSTGRES_USER=test1234
+POSTGRES_PASSWORD=hajksdg7ASFAT
+POSTGRES_DB=post-votes-db
+DATABASE_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?schema=public&connect_timeout=500"
+```
+Note: postgres in ```DATABASE_URL``` is the name of db service in docker-compose.yml.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Then run:
+```docker-compose up --build```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
--   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
--   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
